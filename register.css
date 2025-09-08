@@ -1,0 +1,153 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #8BC34A;
+    --accent-color: #FFC107;
+    --dark-color: #2E7D32;
+    --light-color: #F1F8E9;
+}
+
+body {
+  background: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+}
+/* Background with blur effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('login_background.webp');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      transform: scale(1.05);
+      z-index: -1;
+    }
+.register-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+}
+
+.register-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.register-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.register-header p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+}
+
+.register-body {
+    padding: 25px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+.btn-register {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-register:hover {
+    background-color: var(--dark-color);
+}
+
+.register-footer {
+    text-align: center;
+    padding: 15px 25px 25px;
+    background-color: #f9f9f9;
+}
+
+.register-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.register-footer a:hover {
+    color: var(--dark-color);
+    text-decoration: underline;
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.password-toggle {
+    position: relative;
+}
+
+.password-toggle .toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    cursor: pointer;
+    color: #777;
+}
+
+.progress {
+    height: 8px;
+    margin-bottom: 15px;
+}
+
+.password-feedback {
+    font-size: 0.85rem;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.requirement {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.requirement i {
+    width: 20px;
+}
+
+.valid {
+    color: var(--primary-color);
+}
+
+.invalid {
+    color: #dc3545;
+}
