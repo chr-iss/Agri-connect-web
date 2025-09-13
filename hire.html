@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Connect - Equipment Hire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="hire.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <i class="fas fa-tractor me-2"></i>Agri Connect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="hire.html">Hire Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketing.html">Marketing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="why-us.html">Why Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="cart.html" class="btn btn-outline-light position-relative me-3">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Equipment Hire</h1>
+            <p class="lead">Browse and rent the latest farming equipment</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Filters Sidebar -->
+            <div class="col-lg-3">
+                <div class="filter-section">
+                    <h5 class="mb-3">Filter Equipment</h5>
+                    
+                    <div class="mb-3">
+                        <label for="categoryFilter" class="form-label">Category</label>
+                        <select class="form-select" id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="tractor">Tractors</option>
+                            <option value="plow">Plows</option>
+                            <option value="tiller">Tillers</option>
+                            <option value="harvester">Harvesters</option>
+                            <option value="sprayer">Sprayers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="priceFilter" class="form-label">Price Range</label>
+                        <select class="form-select" id="priceFilter">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under R500/hr</option>
+                            <option value="500-1000">R500 - R1000/hr</option>
+                            <option value="1000-1500">R1000 - R1500/hr</option>
+                            <option value="1500+">Over R1500/hr</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="availabilityFilter" class="form-label">Availability</label>
+                        <select class="form-select" id="availabilityFilter">
+                            <option value="all">All</option>
+                            <option value="available">Available Now</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="sortBy" class="form-label">Sort By</label>
+                        <select class="form-select" id="sortBy">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">Price (Low to High)</option>
+                            <option value="price-high">Price (High to Low)</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100" id="applyFilters">Apply Filters</button>
+                    <button class="btn btn-outline-secondary w-100 mt-2" id="clearFilters">Clear Filters</button>
+                </div>
+                
+                <!-- Cart Summary -->
+                <div class="cart-sidebar">
+                    <h5 class="mb-3">Your Cart</h5>
+                    <div id="cartItems">
+                        <p class="text-muted">Your cart is empty</p>
+                    </div>
+                    <div id="cartTotal" class="fw-bold mt-3" style="display: none;">
+                        Total: <span id="totalAmount">R0.00</span>
+                    </div>
+                    <a href="checkout.html" class="btn btn-primary w-100 mt-3" id="checkoutBtn" style="display: none;">Proceed to Checkout</a>
+                </div>
+            </div>
+            
+            <!-- Equipment Listing -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="section-title">Available Equipment</h2>
+                    <div class="d-flex">
+                        <div class="btn-group me-2" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="gridView">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="listView">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                        <span class="text-muted" id="equipmentCount">Showing 6 items</span>
+                    </div>
+                </div>
+                
+                <div class="row" id="equipmentGrid">
+                    <!-- Equipment cards will be dynamically loaded here -->
+                </div>
+                
+                <nav aria-label="Equipment pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-tractor me-2"></i>Agri Connect</h5>
+                    <p>Making farming better for everyone through equipment rental, education, and marketing services.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="hire.html">Hire Equipment</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="marketing.html">Marketing</a></li>
+                        <li><a href="why-us.html">Why Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <i class="fas fa-map-marker-alt me-2"></i> 123 Farm Road, Agriculture City<br>
+                        <i class="fas fa-phone me-2"></i> (012) 345-6789<br>
+                        <i class="fas fa-envelope me-2"></i> info@agriconnect.com
+                    </address>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 Agri Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Include Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Include custom JS -->
+    <script src="hire.js"></script>
+</body>
+</html>
