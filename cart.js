@@ -1,4 +1,4 @@
-// Initialize Supabase
+// Initialize Supabase with your credentials
 const supabaseUrl = 'https://hxkmxesehefhypywbuqz.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4a214ZXNlaGVmaHlweXdidXF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNjMwODEsImV4cCI6MjA3MjgzOTA4MX0.SqEx7_5Mf1AXT1TbEy6gFl5bm2eFS8SITkWXcEJcxSM';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);

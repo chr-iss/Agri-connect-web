@@ -1,3 +1,46 @@
+// Initialize Supabase with your credentials
+const supabaseUrl = 'https://hxkmxesehefhypywbuqz.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4a214ZXNlaGVmaHlweXdidXF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNjMwODEsImV4cCI6MjA3MjgzOTA4MX0.SqEx7_5Mf1AXT1TbEy6gFl5bm2eFS8SITkWXcEJcxSM';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// DOM element
+const equipmentContainer = document.getElementById('equipmentContainer');
+
+// Fetch and display equipment
+async function loadEquipment() {
+    const { data, error } = await supabase
+        .from('equipment')
+        .select('*')
+        .order('id', { ascending: true });
+
+    if (error) {
+        console.error('Error fetching equipment:', error.message);
+        equipmentContainer.innerHTML = '<p class="text-danger">Failed to load equipment.</p>';
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        equipmentContainer.innerHTML = '<p>No equipment available.</p>';
+        return;
+    }
+
+    equipmentContainer.innerHTML = data.map(eq => `
+        <div class="col-md-4">
+            <div class="card">
+                <img src="${eq.image_url || 'placeholder.jpg'}" class="card-img-top" alt="${eq.name}" height="200" style="object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">${eq.name}</h5>
+                    <p class="card-text">${eq.description}</p>
+                    <p class="fw-bold text-primary">R${eq.price}/hr</p>
+                    <a href="hire.html" class="btn btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Load equipment when page loads
+window.addEventListener('DOMContentLoaded', loadEquipment);
 // Simple counter animation for stats
 function animateValue(id, start, end, duration) {
     const obj = document.getElementById(id);
