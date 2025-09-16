@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Agri Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="education.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-tractor me-2"></i>Agri Connect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hire.html">Hire Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="education.html">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="marketing.html">Marketing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="why-us.html">Why Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex" id="authButtons">
+                    <a href="cart.html" class="btn btn-outline-light position-relative me-3">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Agricultural Education</h1>
+            <p class="lead">Learn modern farming techniques and improve your agricultural skills</p>
+            <form class="mt-4" id="searchForm">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search courses, tutorials, and resources...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Featured Courses -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="section-title">Featured Courses</h2>
+            </div>
+            <div id="featuredCourses" class="row">
+                <!-- Courses will be loaded dynamically -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading courses...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Paths -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="section-title">Learning Paths</h2>
+                <p class="lead">Structured programs to guide your agricultural education journey</p>
+            </div>
+            <div class="col-md-6">
+                <div class="learning-path">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h5 class="mb-0">Beginner Farmer Program</h5>
+                            <p class="text-muted mb-0">Start your farming journey with confidence</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Learn the fundamentals of soil preparation, planting, basic crop care, and harvesting techniques.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="learning-path">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h5 class="mb-0">Commercial Farming Track</h5>
+                            <p class="text-muted mb-0">Scale your operations for profit</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Master business planning, financial management, and scaling strategies for commercial farming.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="learning-path">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h5 class="mb-0">Organic Certification Path</h5>
+                            <p class="text-muted mb-0">Transition to organic farming methods</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Understand the requirements and processes for organic certification and sustainable practices.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="learning-path">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h5 class="mb-0">Agricultural Technology</h5>
+                            <p class="text-muted mb-0">Implement modern tech on your farm</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">Explore precision agriculture, IoT devices, drones, and data-driven farming techniques.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="section-title">Learning Resources</h2>
+                
+                <ul class="nav nav-pills mb-4" id="resourcesTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="videos-tab" data-bs-toggle="pill" data-bs-target="#videos" type="button" role="tab">Videos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="articles-tab" data-bs-toggle="pill" data-bs-target="#articles" type="button" role="tab">Articles</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="webinars-tab" data-bs-toggle="pill" data-bs-target="#webinars" type="button" role="tab">Webinars</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="guides-tab" data-bs-toggle="pill" data-bs-target="#guides" type="button" role="tab">Guides</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="resourcesTabContent">
+                    <div class="tab-pane fade show active" id="videos" role="tabpanel">
+                        <div class="row" id="videoResources">
+                            <!-- Video resources will be loaded dynamically -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="articles" role="tabpanel">
+                        <div class="row" id="articleResources">
+                            <!-- Article resources will be loaded dynamically -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="webinars" role="tabpanel">
+                        <div class="row" id="webinarResources">
+                            <!-- Webinar resources will be loaded dynamically -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="guides" role="tabpanel">
+                        <div class="row" id="guideResources">
+                            <!-- Guide resources will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+       
+
+        <!-- Stats Section -->
+        <div class="row mb-5">
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <p class="stats-number" id="farmersTrained">5,000+</p>
+                    <p class="stats-label">Farmers Trained</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <p class="stats-number" id="coursesAvailable">120+</p>
+                    <p class="stats-label">Courses Available</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <p class="stats-number">98%</p>
+                    <p class="stats-label">Satisfaction Rate</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <p class="stats-number" id="expertInstructors">25</p>
+                    <p class="stats-label">Expert Instructors</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="row">
+            <div class="col-12 text-center py-5 cta-section">
+                <h2 class="mb-3">Ready to Enhance Your Farming Skills?</h2>
+                <p class="lead mb-4">Join thousands of farmers who have transformed their operations through our educational programs</p>
+                <a href="#" class="btn btn-primary btn-lg me-3" id="browseAllCourses">Browse All Courses</a>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-tractor me-2"></i>Agri Connect</h5>
+                    <p>Making farming better for everyone through equipment rental, education, and marketing services.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="hire.html">Hire Equipment</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="marketing.html">Marketing</a></li>
+                        <li><a href="why-us.html">Why Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <i class="fas fa-map-marker-alt me-2"></i> 123 Farm Road, Agriculture City<br>
+                        <i class="fas fa-phone me-2"></i> (012) 345-6789<br>
+                        <i class="fas fa-envelope me-2"></i> info@agriconnect.com
+                    </address>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 Agri Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!--  custom JS -->
+    <script src="education.js"></script>
+</body>
+</html>

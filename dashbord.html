@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - RentEase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">Agri-connect</div>
+      <ul class="nav-links">
+        <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="#"><i class="fas fa-box"></i> Equipment</a></li>
+        <li><a href="#"><i class="fas fa-calendar-alt"></i> Bookings</a></li>
+        <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+        <li><a href="#" id="sidebarLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- Top navbar -->
+      <header class="topbar">
+        <div class="welcome">
+          <h2>Welcome, <span id="greetingUserName">User</span></h2>
+        </div>
+        <div class="user-profile">
+          <img id="userProfileImage" src="#" alt="User Avatar">
+          <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+      </header>
+
+      <!-- Stats cards -->
+      <section class="stats-cards">
+        <div class="card">
+          <h4>Active Rentals</h4>
+          <p id="statActiveRentals">0</p>
+        </div>
+        <div class="card">
+          <h4>Monthly Revenue</h4>
+          <p id="statMonthlyRevenue">R0</p>
+        </div>
+        <div class="card">
+          <h4>Average Rating</h4>
+          <p id="statAverageRating">0</p>
+        </div>
+        <div class="card">
+          <h4>Upcoming Bookings</h4>
+          <p id="statUpcomingBookings">0</p>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="charts">
+        <div class="chart-card">
+          <h4>Revenue (Last 12 Months)</h4>
+          <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>Equipment Status</h4>
+          <canvas id="equipmentChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Recent Activity -->
+      <section class="activity-section">
+        <h4>Recent Activity</h4>
+        <div id="recentActivityContainer" class="activity-list">
+          <!-- JS will populate -->
+        </div>
+      </section>
+
+      <!-- Popular Equipment -->
+      <section class="popular-equipment">
+        <h4>Popular Equipment</h4>
+        <div id="popularEquipmentContainer" class="equipment-grid">
+          <!-- JS will populate -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

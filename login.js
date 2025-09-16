@@ -28,84 +28,65 @@ togglePassword.addEventListener('click', function() {
     eyeIcon.classList.toggle('fa-eye-slash');
 });
 
+
 // Handle form submission
 loginForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    // Get form values
-    const email = emailInput.value;
-    const password = passwordInput.value;
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
     const rememberMe = document.getElementById('rememberMe').checked;
-    
-    // Validate inputs
+
     if (!email || !password) {
         showError('Please fill in all fields');
         return;
     }
-    
-    // Show loading state
+
+    // Show loading
     loginText.textContent = 'Signing in...';
     loginSpinner.style.display = 'inline-block';
     loginButton.disabled = true;
-    
+
     try {
-        // Sign in with Supabase
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
-        
-        if (error) {
-            throw error;
+        // Query users table
+        const { data: users, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('email', email)
+            .single();
+
+        if (error || !users) {
+            throw new Error('User not found');
         }
-        
+
+        // Simple password check (⚠️ assumes stored in plain text)
+        if (users.password !== password) {
+            throw new Error('Invalid password');
+        }
+
         // Success
         showSuccess('Login successful! Redirecting...');
-        
-        // Store user session if "Remember me" is checked
+
+        // Save session
         if (rememberMe) {
-            localStorage.setItem('agriConnectUser', JSON.stringify(data.user));
+            localStorage.setItem('agriConnectUser', JSON.stringify(users));
         } else {
-            sessionStorage.setItem('agriConnectUser', JSON.stringify(data.user));
+            sessionStorage.setItem('agriConnectUser', JSON.stringify(users));
         }
-        
-        // Redirect to dashboard after a short delay
+
         setTimeout(() => {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'home.html';
         }, 1500);
-        
+
     } catch (error) {
         showError(error.message);
     } finally {
-        // Reset button state
         loginText.textContent = 'Sign In';
         loginSpinner.style.display = 'none';
         loginButton.disabled = false;
     }
 });
 
-// Forgot password handler
-forgotPasswordLink.addEventListener('click', async function(e) {
-    e.preventDefault();
-    
-    const email = emailInput.value;
-    if (!email) {
-        showError('Please enter your email address first');
-        return;
-    }
-    
-    try {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/reset-password.html',
-        });
-        
-        if (error) throw error;
-        
-        showSuccess('Password reset instructions sent to your email');
-    } catch (error) {
-        showError(error.message);
-    }
-});
 
 // Register link handler
 registerLink.addEventListener('click', function(e) {
