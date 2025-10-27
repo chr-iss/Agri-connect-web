@@ -1,7 +1,6 @@
 # Agri-connect-web
 
 
-
 Agri-Connect is a digital agriculture platform that connects farmers, buyers, and suppliers in one place. It solves the challenge of limited market access for farmers, difficulty in sourcing fresh produce for buyers, and visibility issues for suppliers.
 
 At its core, Agri-Connect is:
